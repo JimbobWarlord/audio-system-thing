@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Electrolize";
+  font-family: "Lato";
   margin: 0;
   padding: 0;
   background-color: black;
@@ -27,11 +27,15 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 10;
-  padding: 10;
+  margin: top;
+  padding: 2;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 2rem;
+}
+
+img {
+  width: 1920px;
+  height: 1080px;
 }
 
 .box2 {
