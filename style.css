@@ -1,0 +1,76 @@
+.header {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: silver;
+  color: black;
+  margin: 0;
+  padding: 1rem;
+  top: 0;
+}
+
+body {
+  font-family: "Electrolize";
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: gold;
+}
+
+.megabox {
+  display: flex;
+  flex-direction: row;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 10;
+  padding: 10;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.box2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 10;
+  padding: 10;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.box3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 10;
+  padding: 10;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contrast {
+  color: white;
+}
+
+img {
+  height: 20%;
+  width: 20%;
+}
+
+.footer {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: silver;
+  color: black;
+  margin: 0;
+  padding: 1rem;
+}
