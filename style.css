@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "TrajanPro-Bold";
+  src: url(TrajanPro-Bold.otf);
+}
+
 .header {
   display: flex;
   text-align: center;
@@ -11,7 +16,7 @@
 }
 
 body {
-  font-family: "Lato";
+  font-family: "TrajanPro-Bold";
   margin: 0;
   padding: 0;
   background-color: black;
