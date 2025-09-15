@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interaction Design Analysis</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id = "map-screen"></div>
+      <header>
+        <button id = "info">INFO</button>
+        <h1 id="header">HOLLOW KNIGHT PROJECT</h1>
+        <button id = "settings">
+          <img
+              id="replay-img"
+              src="https://img.icons8.com/ios-glyphs/30/replay.png"
+              width="24"
+              height="24"
+              />Settings Icon goes here</button>
+      </header>
+
+      <div class="container" id="container"></div>
+
+      <footer>
+        <button id = "random">RANDOM</button>
+        <h2 id="footer">Created by James Warlond</h2>
+        <button id = "music-list">MUSIC LIST</button>
+      </footer>
+    </div>
+
+    <div id="music-list-screen" class="hidden">
+      <div class="options-menu">
+        <h1>MUSIC LIST</h1>
+        <hr class="menu-line" />
+        <ul class="menu-list">
+            <button id = "city-of-tears-select">City of Tears</button>
+            <button id = "greenpath-select">Greenpath</button>
+            <button id = "crystal-peak-select">Crystal Peak</button>
+        </ul>
+        <button id="back-to-map">BACK</button>
+      </div>
+    </div>
+
+    <audio id="my-audio"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
