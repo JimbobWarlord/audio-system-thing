@@ -30,6 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
       width: "215px",
       height: "200px",
     },
+    {
+      id: "mantis-lords",
+      show: "NOW PLAYING - MANTIS LORDS",
+      audio: "29.mp3",
+      top: "70%",
+      left: "36.5%",
+      width: "50px",
+      height: "50px",
+    },
   ];
 
   regions.forEach((region) => {
@@ -60,16 +69,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const settingsScreen = document.getElementById("settings-screen");
+const settingsBtn = document.getElementById("settings");
 const mapScreen = document.getElementById("map-screen");
 const musicListScreen = document.getElementById("music-list-screen");
 const musicListBtn = document.getElementById("music-list");
 const backBtn = document.getElementById("back-to-map");
-const settingsScreen = document.getElementById("settings-screen");
-const settingsBtn = document.getElementById("settings-list");
+const backBtn2 = document.getElementById("back-to-map-2");
 
 musicListBtn.addEventListener("click", () => {
   mapScreen.classList.add("hidden");
   musicListScreen.classList.remove("hidden");
+});
+
+settingsBtn.addEventListener("click", () => {
+  mapScreen.classList.add("hidden");
+  settingsScreen.classList.remove("hidden");
 });
 
 backBtn.addEventListener("click", () => {
@@ -77,9 +92,9 @@ backBtn.addEventListener("click", () => {
   mapScreen.classList.remove("hidden");
 });
 
-settingsBtn.addEventListener("click", () => {
-  mapScreen.classList.add("hidden");
-  settingsScreen.classList.remove("hidden");
+backBtn2.addEventListener("click", () => {
+  settingsScreen.classList.add("hidden");
+  mapScreen.classList.remove("hidden");
 });
 
 const audioSelect = document.getElementById("my-audio");
@@ -109,4 +124,22 @@ crystalpeakBtn.addEventListener("click", () => {
   audioSelect.play();
   audioSelect.volume = 0.25;
   footer.innerHTML = "NOW PLAYING - CRYSTAL PEAK";
+});
+
+const mantislordsBtn = document.getElementById("mantis-lords-select");
+mantislordsBtn.addEventListener("click", () => {
+  audioSelect.src = "29.mp3";
+  audioSelect.currentTime = 0;
+  audioSelect.play();
+  audioSelect.volume = 0.25;
+  footer.innerHTML = "NOW PLAYING - MANTIS LORDS";
+});
+
+const nightmarekingBtn = document.getElementById("nightmare-king-select");
+nightmarekingBtn.addEventListener("click", () => {
+  audioSelect.src = "54.mp3";
+  audioSelect.currentTime = 0;
+  audioSelect.play();
+  audioSelect.volume = 0.25;
+  footer.innerHTML = "NOW PLAYING - NIGHTMARE KING";
 });
