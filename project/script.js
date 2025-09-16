@@ -64,42 +64,49 @@ const mapScreen = document.getElementById("map-screen");
 const musicListScreen = document.getElementById("music-list-screen");
 const musicListBtn = document.getElementById("music-list");
 const backBtn = document.getElementById("back-to-map");
+const settingsScreen = document.getElementById("settings-screen");
+const settingsBtn = document.getElementById("settings-list");
 
-musicListBtn.addEventListener('click', () => {
-  mapScreen.classList.add('hidden');
-  musicListScreen.classList.remove('hidden');
+musicListBtn.addEventListener("click", () => {
+  mapScreen.classList.add("hidden");
+  musicListScreen.classList.remove("hidden");
 });
 
-backBtn.addEventListener('click', () => {
-  musicListScreen.classList.add('hidden');
-  mapScreen.classList.remove('hidden');
+backBtn.addEventListener("click", () => {
+  musicListScreen.classList.add("hidden");
+  mapScreen.classList.remove("hidden");
 });
 
-const audioSelect = document.getElementById('my-audio');
+settingsBtn.addEventListener("click", () => {
+  mapScreen.classList.add("hidden");
+  settingsScreen.classList.remove("hidden");
+});
 
-const cityOfTearsBtn = document.getElementById('city-of-tears-select');
-cityOfTearsBtn.addEventListener('click', () => {
-  audioSelect.src = '16.mp3';
+const audioSelect = document.getElementById("my-audio");
+
+const cityOfTearsBtn = document.getElementById("city-of-tears-select");
+cityOfTearsBtn.addEventListener("click", () => {
+  audioSelect.src = "16.mp3";
   audioSelect.currentTime = 0;
   audioSelect.play();
-  audio.volume = 0.25;
+  audioSelect.volume = 0.25;
   footer.innerHTML = "NOW PLAYING - CITY OF TEARS";
 });
 
-const greenpathBtn = document.getElementById('greenpath-select');
-greenpathBtn.addEventListener('click', () => {
-  audioSelect.src = '09.mp3';
+const greenpathBtn = document.getElementById("greenpath-select");
+greenpathBtn.addEventListener("click", () => {
+  audioSelect.src = "09.mp3";
   audioSelect.currentTime = 0;
   audioSelect.play();
-  audio.volume = 0.25;
+  audioSelect.volume = 0.25;
   footer.innerHTML = "NOW PLAYING - GREENPATH";
 });
 
-const crystalpeakBtn = document.getElementById('crystal-peak-select');
-crystalpeakBtn.addEventListener('click', () => {
-  audioSelect.src = '20.mp3';
+const crystalpeakBtn = document.getElementById("crystal-peak-select");
+crystalpeakBtn.addEventListener("click", () => {
+  audioSelect.src = "20.mp3";
   audioSelect.currentTime = 0;
   audioSelect.play();
-  audio.volume = 0.25;
+  audioSelect.volume = 0.25;
   footer.innerHTML = "NOW PLAYING - CRYSTAL PEAK";
 });
