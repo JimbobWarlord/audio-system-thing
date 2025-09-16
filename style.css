@@ -54,8 +54,6 @@ body {
 .hover {
   position: absolute;
   cursor: pointer;
-  background-color: aqua;
-  opacity: 20%;
   pointer-events: auto;
 }
 
