@@ -333,6 +333,7 @@ const backBtn3 = document.getElementById("back-to-map-3");
 musicListBtn.addEventListener("click", () => {
   mapScreen.classList.add("hidden");
   musicListScreen.classList.remove("hidden");
+  musicListScreen.scrollTop = 0;
 });
 
 settingsBtn.addEventListener("click", () => {
