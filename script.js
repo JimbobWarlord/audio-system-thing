@@ -169,10 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "resting-grounds-3",
       show: "NOW PLAYING - RESTING GROUNDS",
       audio: "32.mp3",
-      top: "43%",
+      top: "44.6%",
       left: "70%",
       width: "26px",
-      height: "54px",
+      height: "44px",
     },
     {
       id: "resting-grounds-4",
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
       top: "25%",
       left: "81%",
       width: "67px",
-      height: "69px",
+      height: "50px",
     },
     {
       id: "white-palace",
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "the-hive",
       show: "NOW PLAYING - THE HIVE",
-      audio: "46.mp3",
+      audio: "48.mp3",
       top: "73%",
       left: "81%",
       width: "65px",
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "deepnest",
       show: "NOW PLAYING - DEEPNEST",
-      audio: "46.mp3",
+      audio: "51.mp3",
       top: "65%",
       left: "1%",
       width: "387px",
@@ -258,11 +258,29 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "deepnest-2",
       show: "NOW PLAYING - DEEPNEST",
-      audio: "46.mp3",
+      audio: "51.mp3",
       top: "77%",
       left: "35%",
       width: "120px",
       height: "50px",
+    },
+    {
+      id: "colosseum",
+      show: "NOW PLAYING - COLOSSEUM OF FOOLS",
+      audio: "67.mp3",
+      top: "45%",
+      left: "77%",
+      width: "80px",
+      height: "40px",
+    },
+    {
+      id: "abyss",
+      show: "NOW PLAYING - THE ABYSS",
+      audio: "78.mp3",
+      top: "93%",
+      left: "57.5%",
+      width: "50px",
+      height: "25px",
     },
   ];
 
@@ -277,17 +295,24 @@ document.addEventListener("DOMContentLoaded", () => {
     area.style.height = region.height;
 
     area.addEventListener("mouseenter", () => {
-      audio.src = region.audio;
-      audio.currentTime = 0;
-      audio.play();
-      audio.volume = 0.25;
+      const src = region.audio;
+      if (!audio.src.endsWith(src)) {
+        audio.src = src;
+        audio.currentTime = 0;
+        audio.volume = 0.25;
+        audio.play().catch(() => {});
+      } else {
+        if (audio.paused) audio.play().catch(() => {});
+      }
       footer.innerHTML = region.show;
     });
 
-    area.addEventListener("mouseleave", () => {
-      audio.pause();
-      audio.currentTime = 0;
-      footer.innerHTML = "CREATED BY JAMES WARLOND";
+    document.addEventListener("keydown", function (event) {
+      if (event.key.toLowerCase() === "s") {
+        audio.pause();
+        audio.currentTime = 0;
+        footer.innerHTML = "CREATED BY JAMES WARLOND";
+      }
     });
 
     container.appendChild(area);
