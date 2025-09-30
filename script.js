@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       width: "70px",
       height: "50px",
     },
-    {
+    /*{
       id: "mantis-lords",
       show: "NOW PLAYING - MANTIS LORDS",
       audio: "29.mp3",
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       left: "36.5%",
       width: "50px",
       height: "50px",
-    },
+    },*/
     {
       id: "fog-canyon",
       show: "NOW PLAYING - FOG CANYON",
@@ -375,6 +375,31 @@ musiclisting.forEach((button) => {
     footer.innerHTML = "NOW PLAYING - " + title;
     console.log("Work");
   });
+});
+
+const audio = document.getElementById("my-audio");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "d") {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    console.log("bing!");
+
+    const x = 38;
+    const y = 72;
+    dot.style.left = `${x}%`;
+    dot.style.top = `${y}%`;
+
+    dot.addEventListener("click", () => {
+      audio.src = "29.mp3";
+      audioSelect.currentTime = 0;
+      audioSelect.play();
+      audioSelect.volume = 0.25;
+      footer.innerHTML = "NOW PLAYING - MANTIS LORDS";
+      console.log("Work");
+    });
+
+    container.appendChild(dot);
+  }
 });
 
 document.addEventListener("keydown", function (event) {
