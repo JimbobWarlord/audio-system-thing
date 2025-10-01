@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!audio.src.endsWith(src)) {
         audio.src = src;
         audio.currentTime = 0;
-        audio.volume = 0.25;
+        audio.volume = 0.2;
         audio.play().catch(() => {});
       } else {
         if (audio.paused) audio.play().catch(() => {});
@@ -311,6 +311,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key.toLowerCase() === "s") {
         audio.pause();
         audio.currentTime = 0;
+        audio2.pause();
+        audio2.currentTime = 0;
         footer.innerHTML = "CREATED BY JAMES WARLOND";
       }
     });
@@ -371,35 +373,137 @@ musiclisting.forEach((button) => {
     audioSelect.src = src;
     audioSelect.currentTime = 0;
     audioSelect.play();
-    audioSelect.volume = 0.25;
+    audioSelect.volume = 0.2;
     footer.innerHTML = "NOW PLAYING - " + title;
     console.log("Work");
   });
 });
 
-const audio = document.getElementById("my-audio");
-document.addEventListener("keydown", (event) => {
-  if (event.key === "d") {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    console.log("bing!");
+const bosses = [
+  {
+    id: "false-knight",
+    show: "NOW PLAYING - FALSE KNIGHT",
+    audio: "06.mp3",
+    top: "38%",
+    left: "49%",
+  },
+  {
+    id: "greenpath",
+    show: "NOW PLAYING - HORNET",
+    audio: "13.mp3",
+    top: "33%",
+    left: "16.7%",
+  },
+  {
+    id: "dung-defender",
+    show: "NOW PLAYING - DUNG DEFENDER",
+    audio: "19.mp3",
+    top: "70%",
+    left: "67.7%",
+  },
+  {
+    id: "mantis-lords",
+    show: "NOW PLAYING - MANTIS LORDS",
+    audio: "29.mp3",
+    left: "38%",
+    top: "72%",
+  },
+  {
+    id: "broken-vessel",
+    show: "NOW PLAYING - BROKEN VESSEL",
+    audio: "40.mp3",
+    top: "90%",
+    left: "52%",
+  },
+  {
+    id: "nosk",
+    show: "NOW PLAYING - NOSK",
+    audio: "42.mp3",
+    top: "84%",
+    left: "34%",
+  },
+  {
+    id: "sealed-vessel",
+    show: "NOW PLAYING - SEALED VESSEL",
+    audio: "47.mp3",
+    top: "31%",
+    left: "51.3%",
+  },
+  {
+    id: "nightmare-king",
+    show: "NOW PLAYING - NIGHTMARE KING",
+    audio: "54.mp3",
+    top: "24%",
+    left: "35%",
+  },
+  {
+    id: "the-collector",
+    show: "NOW PLAYING - THE COLLECTOR",
+    audio: "59.mp3",
+    top: "53%",
+    left: "77%",
+  },
+];
 
-    const x = 38;
-    const y = 72;
-    dot.style.left = `${x}%`;
-    dot.style.top = `${y}%`;
+bosses.forEach((fight) => {
+  const dot = document.createElement("div");
+  dot.id = fight.id;
+  dot.classList.add("click");
+
+  const audio = document.getElementById("my-audio");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "d") {
+      dot.classList.add("dot");
+      console.log("bing!");
+
+      dot.style.left = fight.left;
+      dot.style.top = fight.top;
+      dot.style.width = "20px";
+      dot.style.height = "20px";
+      dot.style.backgroundColor = "lightcoral";
+      dot.style.borderRadius = "50%";
+      dot.style.position = "absolute";
+      dot.style.cursor = "pointer";
+      dot.style.zIndex = "100";
+    }
 
     dot.addEventListener("click", () => {
-      audio.src = "29.mp3";
-      audioSelect.currentTime = 0;
-      audioSelect.play();
-      audioSelect.volume = 0.25;
-      footer.innerHTML = "NOW PLAYING - MANTIS LORDS";
-      console.log("Work");
+      const src = fight.audio;
+      audio.src = src;
+      audio.currentTime = 0;
+      audio.volume = 0.2;
+      audio.play();
+      footer.innerHTML = fight.show;
     });
 
+    /*dot.addEventListener("click", () => {
+        audio.src = "29.mp3";
+        audioSelect.currentTime = 0;
+        audioSelect.play();
+        audioSelect.volume = 0.2;
+        footer.innerHTML = "NOW PLAYING - MANTIS LORDS";
+        console.log("Work");*/
     container.appendChild(dot);
-  }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "f") {
+      dot.classList.remove("dot");
+      console.log("bing!");
+
+      dot.style.width = "0px";
+      dot.style.height = "0px";
+    }
+  });
+});
+
+const audio2 = document.getElementById("my-audio-ambient");
+const ambientBtn = document.getElementById("ambient");
+ambientBtn.addEventListener("click", () => {
+  audio2.src = "29.mp3";
+  audio2.currentTime = 0;
+  audio2.play();
+  audio2.volume = 0.2;
+  console.log("Work");
 });
 
 document.addEventListener("keydown", function (event) {

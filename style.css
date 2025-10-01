@@ -49,6 +49,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: 1;
 }
 
 .hover {
@@ -112,7 +113,7 @@ footer button:hover {
   font-size: 2rem;
 }
 
-.fucking-box {
+.dumb-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,10 +207,11 @@ footer button:hover {
   background-color: #000;
   color: white;
   font-family: "TrajanPro-Bold";
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   z-index: 1001;
+  overflow-y: auto;
 }
 
 .settings-list-menu {
@@ -287,5 +289,34 @@ footer button:hover {
 }
 
 #back-to-map-3:hover {
+  scale: 0.85;
+}
+
+.ambient {
+  font-family: "TrajanPro-Bold";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 8px 100px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/*.dot {
+  width: 20px;
+  height: 20px;
+  background-color:lightcoral;
+  border-radius: 50%;
+  position:absolute;
+  cursor:pointer;
+  z-index:100;
+}*/
+
+.dot:hover {
   scale: 0.85;
 }
