@@ -120,15 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
       width: "70px",
       height: "50px",
     },
-    /*{
-      id: "mantis-lords",
-      show: "NOW PLAYING - MANTIS LORDS",
-      audio: "29.mp3",
-      top: "70%",
-      left: "36.5%",
-      width: "50px",
-      height: "50px",
-    },*/
     {
       id: "fog-canyon",
       show: "NOW PLAYING - FOG CANYON",
@@ -299,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!audio.src.endsWith(src)) {
         audio.src = src;
         audio.currentTime = 0;
-        audio.volume = 0.2;
+        /*audio.volume = 0.2;*/
         audio.play().catch(() => {});
       } else {
         if (audio.paused) audio.play().catch(() => {});
@@ -373,7 +364,7 @@ musiclisting.forEach((button) => {
     audioSelect.src = src;
     audioSelect.currentTime = 0;
     audioSelect.play();
-    audioSelect.volume = 0.2;
+    /*audioSelect.volume = 0.2;*/
     footer.innerHTML = "NOW PLAYING - " + title;
     console.log("Work");
   });
@@ -386,13 +377,15 @@ const bosses = [
     audio: "06.mp3",
     top: "38%",
     left: "49%",
+    tag: "False Knight",
   },
   {
-    id: "greenpath",
+    id: "hornet",
     show: "NOW PLAYING - HORNET",
     audio: "13.mp3",
     top: "33%",
     left: "16.7%",
+    tag: "Hornet",
   },
   {
     id: "dung-defender",
@@ -400,6 +393,7 @@ const bosses = [
     audio: "19.mp3",
     top: "70%",
     left: "67.7%",
+    tag: "Dung Defender",
   },
   {
     id: "mantis-lords",
@@ -407,6 +401,7 @@ const bosses = [
     audio: "29.mp3",
     left: "38%",
     top: "72%",
+    tag: "Mantis Lords",
   },
   {
     id: "broken-vessel",
@@ -414,6 +409,7 @@ const bosses = [
     audio: "40.mp3",
     top: "90%",
     left: "52%",
+    tag: "Broken Vessel",
   },
   {
     id: "nosk",
@@ -421,6 +417,7 @@ const bosses = [
     audio: "42.mp3",
     top: "84%",
     left: "34%",
+    tag: "Nosk",
   },
   {
     id: "sealed-vessel",
@@ -428,6 +425,7 @@ const bosses = [
     audio: "47.mp3",
     top: "31%",
     left: "51.3%",
+    tag: "Sealed Vessel",
   },
   {
     id: "nightmare-king",
@@ -435,6 +433,7 @@ const bosses = [
     audio: "54.mp3",
     top: "24%",
     left: "35%",
+    tag: "Nightmare King",
   },
   {
     id: "the-collector",
@@ -442,6 +441,7 @@ const bosses = [
     audio: "59.mp3",
     top: "53%",
     left: "77%",
+    tag: "The Collector",
   },
 ];
 
@@ -465,33 +465,23 @@ bosses.forEach((fight) => {
       dot.style.position = "absolute";
       dot.style.cursor = "pointer";
       dot.style.zIndex = "100";
+      dot.title = fight.tag;
     }
 
     dot.addEventListener("click", () => {
       const src = fight.audio;
       audio.src = src;
       audio.currentTime = 0;
-      audio.volume = 0.2;
+      /*audio.volume = 0.2;*/
       audio.play();
       footer.innerHTML = fight.show;
     });
 
-    /*dot.addEventListener("click", () => {
-        audio.src = "29.mp3";
-        audioSelect.currentTime = 0;
-        audioSelect.play();
-        audioSelect.volume = 0.2;
-        footer.innerHTML = "NOW PLAYING - MANTIS LORDS";
-        console.log("Work");*/
     container.appendChild(dot);
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "f") {
-      dot.classList.remove("dot");
-      console.log("bing!");
-
-      dot.style.width = "0px";
-      dot.style.height = "0px";
+      container.removeChild(dot);
     }
   });
 });
@@ -504,6 +494,39 @@ ambientBtn.addEventListener("click", () => {
   audio2.play();
   audio2.volume = 0.2;
   console.log("Work");
+});
+
+const audio = document.getElementById("my-audio");
+const volumeBtn = document.getElementById("volume-test");
+volumeBtn.addEventListener("click", () => {
+  audio.volume = 0.2;
+});
+
+const randomarea = document.getElementById("random");
+
+randomarea.addEventListener("click", () => {
+  const randomcircle = document.createElement("div");
+  randomcircle.classList.add("random-circle");
+
+  const maxX = container.clientWidth;
+  const maxY = container.clientHeight;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+  randomcircle.style.left = `${x}px`;
+  randomcircle.style.top = `${y}px`;
+
+  container.appendChild(randomcircle);
+  console.log("Test");
+
+  randomcircle.addEventListener("click", () => {
+    container.removeChild(randomcircle);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "q") {
+      container.removeChild(randomcircle);
+    }
+  });
 });
 
 document.addEventListener("keydown", function (event) {

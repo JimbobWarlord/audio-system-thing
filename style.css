@@ -226,7 +226,11 @@ footer button:hover {
 
 .settings-list {
   list-style: none;
+  text-align: center;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .settings-list li {
@@ -245,7 +249,7 @@ footer button:hover {
   color: white;
   border: none;
   padding: 8px 100px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
@@ -319,4 +323,16 @@ footer button:hover {
 
 .dot:hover {
   scale: 0.85;
+}
+
+.random-circle {
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  opacity: 33%;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
 }
