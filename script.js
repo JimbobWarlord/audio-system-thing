@@ -498,8 +498,12 @@ ambientBtn.addEventListener("click", () => {
 
 const audio = document.getElementById("my-audio");
 const volumeBtn = document.getElementById("volume-test");
+const speedBtn = document.getElementById("speed-test");
 volumeBtn.addEventListener("click", () => {
-  audio.volume = 0.2;
+  audio.volume = 0.5;
+});
+speedBtn.addEventListener("click", () => {
+  audio.playbackRate = 1.35;
 });
 
 const randomarea = document.getElementById("random");
