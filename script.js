@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     area.style.width = region.width;
     area.style.height = region.height;
 
-    area.addEventListener("mouseenter", () => {
+    area.addEventListener("click", () => {
       const src = region.audio;
       if (!audio.src.endsWith(src)) {
         audio.src = src;
@@ -495,6 +495,39 @@ bosses.forEach((fight) => {
   });
 });
 
+random.addEventListener("click", () => {
+  const randomDot = bosses[Math.floor(Math.random() * bosses.length)];
+
+  const circle = document.createElement("div");
+  circle.classList.add("circle");
+
+  circle.style.top = randomDot.top;
+  circle.style.left = randomDot.left;
+  circle.dataset.audio = randomDot.audio;
+  circle.title = randomDot.tag;
+  circle.dataset.show = randomDot.show;
+
+  circle.addEventListener("click", () => {
+    console.log(`Clicked circle for: ${circle.dataset.tag}`);
+    const src = circle.dataset.audio;
+    audio.src = src;
+    audio.currentTime = 0;
+    audio.play();
+    circle.style.backgroundColor = "lightcoral";
+    footer.textContent = circle.dataset.show;
+  });
+
+  container.appendChild(circle);
+  footer.textContent = "A BOSS HAS APPEARED ON THE MAP!";
+  console.log("test");
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "q") {
+      container.removeChild(circle);
+    }
+  });
+});
+
 const audio2 = document.getElementById("my-audio-ambient");
 const ambientBtn = document.getElementById("ambient");
 ambientBtn.addEventListener("click", () => {
@@ -515,49 +548,12 @@ speedBtn.addEventListener("click", () => {
   audio.playbackRate = 1.35;
 });
 
-const randomarea = document
-  .getElementById("random")
-  .addEventListener("click", randomise);
-let minRandom = 1;
-let maxRandom = 9;
-function randomise() {
-  let randomNumber = Math.random();
-  let randomFloatInRange = remapRange(
-    randomNumber,
-    0,
-    1,
-    minRandom - 1,
-    maxRandom,
-
-    randomarea.addEventListener("click", () => {
-      const randomcircle = document.createElement("div");
-      randomcircle.classList.add("random-circle");
-      randomcircle.style.left = `${bosses[randomFloatInRange].x}px`;
-      randomcircle.style.top = `${bosses[randomFloatInRange].y}px`;
-    })
-  );
-}
-
 /*const maxX = container.clientWidth;
   const maxY = container.clientHeight;
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
   randomcircle.style.left = `${x}px`;
   randomcircle.style.top = `${y}px`;*/
-
-container.appendChild(randomcircle);
-console.log("Test");
-console.log(randomFloatInRange);
-
-randomcircle.addEventListener("click", () => {
-  container.removeChild(randomcircle);
-});
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "q") {
-    container.removeChild(randomcircle);
-  }
-});
 
 document.addEventListener("keydown", function (event) {
   if (event.key.toLowerCase() === "r") {
