@@ -370,6 +370,21 @@ musiclisting.forEach((button) => {
   });
 });
 
+const randomListing = document.getElementById("random-select");
+const allSongs = document.querySelectorAll("[data-src]");
+
+randomListing.addEventListener("click", () => {
+  const randomSong = Math.floor(Math.random() * allSongs.length);
+  const randomSelect = allSongs[randomSong];
+  const src = randomSelect.dataset.src;
+  const title = randomSelect.textContent.trim();
+
+  audioSelect.src = src;
+  audioSelect.play();
+  console.log(`Playing: ${randomSelect.textContent.trim()}`);
+  footer.innerHTML = "NOW PLAYING - " + title;
+});
+
 const bosses = [
   {
     id: "false-knight",
