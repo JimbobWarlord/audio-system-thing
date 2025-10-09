@@ -373,6 +373,7 @@ musiclisting.forEach((button) => {
 const bosses = [
   {
     id: "false-knight",
+    num: "1",
     show: "NOW PLAYING - FALSE KNIGHT",
     audio: "06.mp3",
     top: "38%",
@@ -381,6 +382,7 @@ const bosses = [
   },
   {
     id: "hornet",
+    num: "2",
     show: "NOW PLAYING - HORNET",
     audio: "13.mp3",
     top: "33%",
@@ -389,6 +391,7 @@ const bosses = [
   },
   {
     id: "dung-defender",
+    num: "3",
     show: "NOW PLAYING - DUNG DEFENDER",
     audio: "19.mp3",
     top: "70%",
@@ -397,6 +400,7 @@ const bosses = [
   },
   {
     id: "mantis-lords",
+    num: "4",
     show: "NOW PLAYING - MANTIS LORDS",
     audio: "29.mp3",
     left: "38%",
@@ -405,6 +409,7 @@ const bosses = [
   },
   {
     id: "broken-vessel",
+    num: "5",
     show: "NOW PLAYING - BROKEN VESSEL",
     audio: "40.mp3",
     top: "90%",
@@ -413,6 +418,7 @@ const bosses = [
   },
   {
     id: "nosk",
+    num: "6",
     show: "NOW PLAYING - NOSK",
     audio: "42.mp3",
     top: "84%",
@@ -421,6 +427,7 @@ const bosses = [
   },
   {
     id: "sealed-vessel",
+    num: "7",
     show: "NOW PLAYING - SEALED VESSEL",
     audio: "47.mp3",
     top: "31%",
@@ -429,6 +436,7 @@ const bosses = [
   },
   {
     id: "nightmare-king",
+    num: "8",
     show: "NOW PLAYING - NIGHTMARE KING",
     audio: "54.mp3",
     top: "24%",
@@ -437,6 +445,7 @@ const bosses = [
   },
   {
     id: "the-collector",
+    num: "9",
     show: "NOW PLAYING - THE COLLECTOR",
     audio: "59.mp3",
     top: "53%",
@@ -506,31 +515,48 @@ speedBtn.addEventListener("click", () => {
   audio.playbackRate = 1.35;
 });
 
-const randomarea = document.getElementById("random");
+const randomarea = document
+  .getElementById("random")
+  .addEventListener("click", randomise);
+let minRandom = 1;
+let maxRandom = 9;
+function randomise() {
+  let randomNumber = Math.random();
+  let randomFloatInRange = remapRange(
+    randomNumber,
+    0,
+    1,
+    minRandom - 1,
+    maxRandom,
 
-randomarea.addEventListener("click", () => {
-  const randomcircle = document.createElement("div");
-  randomcircle.classList.add("random-circle");
+    randomarea.addEventListener("click", () => {
+      const randomcircle = document.createElement("div");
+      randomcircle.classList.add("random-circle");
+      randomcircle.style.left = `${bosses[randomFloatInRange].x}px`;
+      randomcircle.style.top = `${bosses[randomFloatInRange].y}px`;
+    })
+  );
+}
 
-  const maxX = container.clientWidth;
+/*const maxX = container.clientWidth;
   const maxY = container.clientHeight;
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
   randomcircle.style.left = `${x}px`;
-  randomcircle.style.top = `${y}px`;
+  randomcircle.style.top = `${y}px`;*/
 
-  container.appendChild(randomcircle);
-  console.log("Test");
+container.appendChild(randomcircle);
+console.log("Test");
+console.log(randomFloatInRange);
 
-  randomcircle.addEventListener("click", () => {
+randomcircle.addEventListener("click", () => {
+  container.removeChild(randomcircle);
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "q") {
     container.removeChild(randomcircle);
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "q") {
-      container.removeChild(randomcircle);
-    }
-  });
+  }
 });
 
 document.addEventListener("keydown", function (event) {
