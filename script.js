@@ -596,3 +596,9 @@ document.addEventListener("keydown", function (event) {
     document.body.style.background = "radial-gradient(#253a5c, black)";
   }
 });
+
+document.addEventListener("keydown", function (event) {
+  if (event.key.toLowerCase() === "c") {
+    document.body.style.background = "#02030c";
+  }
+});
