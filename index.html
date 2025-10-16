@@ -35,6 +35,7 @@
       <div class="music-list-menu">
         <h1>MUSIC LIST</h1>
         <hr class="menu-line" />
+        <div>
         <div class = "dumb-box">
         <div class = "music-side-1">
         <ul class="menu-list">
@@ -85,6 +86,8 @@
             <button id = "song-select" data-src="86.mp3">RADIANCE</button>
           </div>
         </div>
+        <button id = "random-select">RANDOM</button>
+        </div>
         <button id="back-to-map">BACK</button>
       </div>
     </div>
@@ -95,10 +98,15 @@
         <hr class="menu-line" />
         <div class = "dumb-box">
         <ul class="settings-list">
-            <p>SAMPLE TEXT</p>
-            <button id = "ambient">TOGGLE AMBIENCE</button>
-            <button id = "volume-test">VOLUME TEST</button>
-            <button id = "speed-test">NIGHTCORE</button>
+            <button id = "ambient">TOGGLE AMBIENT NATURE SOUNDS</button>
+            <button id = "ambient2">TOGGLE AMBIENT WATER SOUNDS</button>
+            <button id = "disable">DISABLE AMBIENT SOUNDS</button>
+            <p>VOLUME ADJUST</p>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+            <p>SPEED ADJUST</p>
+            <input type="range" id="speedSlider" min="0" max="2" step="0.01" value="1">
+            <button id = "song-pause">PAUSE SONG</button>
+            <button id = "dot-remove">REMOVE BOSS DOTS</button>
         </ul>
         </div>
         <button id="back-to-map-2">BACK</button>
@@ -126,6 +134,7 @@
 
     <audio id="my-audio"></audio>
     <audio id = "my-audio-ambient"></audio>
+    <audio id = "my-audio-ambient-2"></audio>
 
     <script src="script.js" defer></script>
   </body>

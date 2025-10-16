@@ -302,8 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key.toLowerCase() === "s") {
         audio.pause();
         audio.currentTime = 0;
-        audio2.pause();
-        audio2.currentTime = 0;
         footer.innerHTML = "CREATED BY JAMES WARLOND";
       }
     });
@@ -503,11 +501,6 @@ bosses.forEach((fight) => {
 
     container.appendChild(dot);
   });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "f") {
-      container.removeChild(dot);
-    }
-  });
 });
 
 random.addEventListener("click", () => {
@@ -536,6 +529,11 @@ random.addEventListener("click", () => {
   footer.textContent = "A BOSS HAS APPEARED ON THE MAP!";
   console.log("test");
 
+  const dotremoveBtn = document.getElementById("dot-remove");
+  dotremoveBtn.addEventListener("click", () => {
+    container.removeChild(circle);
+  });
+
   document.addEventListener("keydown", function (event) {
     if (event.key === "q") {
       container.removeChild(circle);
@@ -544,31 +542,48 @@ random.addEventListener("click", () => {
 });
 
 const audio2 = document.getElementById("my-audio-ambient");
+const audio3 = document.getElementById("my-audio-ambient-2");
 const ambientBtn = document.getElementById("ambient");
+const ambient2Btn = document.getElementById("ambient2");
+const disableBtn = document.getElementById("disable");
+const songpauseBtn = document.getElementById("song-pause");
 ambientBtn.addEventListener("click", () => {
-  audio2.src = "29.mp3";
+  audio2.src = "ambient2.mp3";
   audio2.currentTime = 0;
   audio2.play();
   audio2.volume = 0.2;
-  console.log("Work");
+});
+ambient2Btn.addEventListener("click", () => {
+  audio3.src = "ambient1.mp3";
+  audio3.currentTime = 0;
+  audio3.play();
+  audio3.volume = 0.2;
+});
+disableBtn.addEventListener("click", () => {
+  audio2.pause();
+  audio3.pause();
+});
+songpauseBtn.addEventListener("click", () => {
+  audio.pause();
+  audio.currentTime = 0;
+  footer.innerHTML = "CREATED BY JAMES WARLOND";
+  console.log("A");
 });
 
 const audio = document.getElementById("my-audio");
-const volumeBtn = document.getElementById("volume-test");
+const volumeSlider = document.getElementById("volumeSlider");
 const speedBtn = document.getElementById("speed-test");
-volumeBtn.addEventListener("click", () => {
-  audio.volume = 0.5;
-});
-speedBtn.addEventListener("click", () => {
-  audio.playbackRate = 1.35;
-});
+const speedSlider = document.getElementById("speedSlider");
 
-/*const maxX = container.clientWidth;
-  const maxY = container.clientHeight;
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-  randomcircle.style.left = `${x}px`;
-  randomcircle.style.top = `${y}px`;*/
+audio.volume = volumeSlider.value;
+audio.playbackRate = speedSlider.value;
+
+volumeSlider.addEventListener("input", () => {
+  audio.volume = volumeSlider.value;
+});
+speedSlider.addEventListener("input", () => {
+  audio.playbackRate = speedSlider.value;
+});
 
 document.addEventListener("keydown", function (event) {
   if (event.key.toLowerCase() === "r") {
